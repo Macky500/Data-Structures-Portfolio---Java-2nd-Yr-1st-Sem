@@ -1,0 +1,130 @@
+// Queue of Numbers - Canaon
+
+import java.util.Scanner;
+
+public class NumberedQueue {
+    private int maxSize;
+    private int[] queueArray;
+    private int front;
+    private int rear;
+    private int size;
+
+    public NumberedQueue(int size) {
+        maxSize = size;
+        queueArray = new int[maxSize];
+        front = 0;
+        rear = -1;
+        size = 0;
+    }
+
+    public boolean isFull() {
+        return size == maxSize;
+    }
+
+    public boolean isEmpty() {
+        return size == 0;
+    }
+
+    public void insertAtRear(int data) {
+        if (!isFull()) {
+            rear = (rear + 1) % maxSize;
+            queueArray[rear] = data;
+            size++;
+            System.out.println ("Element " + data + " Inserted At The Rear.");
+        } else {
+            System.out.println ("Queue is Full. Cannot Insert.");
+        }
+    }
+
+    public void removeElement() {
+        if (!isEmpty()) {
+            int removedData = queueArray[front];
+            front = (front + 1) % maxSize;
+            size--;
+            System.out.println ("Element " + removedData + " Removed From The Front.");
+        } else {
+            System.out.println ("Queue is Empty. Cannot Remove.");
+        }
+    }
+
+    public void shiftElements() {
+        if (!isEmpty()) {
+            int lastElement = queueArray[rear];
+            for (int i = rear; i > front; i--) {
+                queueArray[i] = queueArray[i - 1];
+            }
+            queueArray[front] = lastElement;
+            System.out.println ("Elements Shifted To The Right by One Place.");
+        } else {
+            System.out.println ("Queue is Empty. Cannot Shift.");
+        }
+    }
+
+    public void traverseAndPrint() {
+        if (!isEmpty()) {
+            System.out.print ("Queue Elements: ");
+            int index = front;
+            for (int i = 0; i < size; i++) {
+                System.out.print (queueArray[index] + " ");
+                index = (index + 1) % maxSize;
+            }
+            System.out.println();
+        } else {
+            System.out.println("Queue is empty.");
+        }
+    }
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        // The Size of the Queue
+        System.out.print ("Enter The Size of the Queue: ");
+        int size = scanner.nextInt();
+
+        NumberedQueue queue = new NumberedQueue(size);
+
+        while (true) {
+            System.out.println ("\nOptions:");
+            System.out.println ("1. Insert at Rear");
+            System.out.println ("2. Remove Element");
+            System.out.println ("3. Shift Elements to the Right");
+            System.out.println ("4. Traverse and Print");
+            System.out.println ("5. Exit");
+            System.out.print ("Enter Your Choice: ");
+
+            int choice = scanner.nextInt();
+
+            switch (choice) {
+		// Inserting an Element
+                case 1:
+                    System.out.print ("Enter a Number to Insert: ");
+                    int element = scanner.nextInt();
+                    queue.insertAtRear(element);
+                    break;
+
+		// Removing an Element
+                case 2:
+                    queue.removeElement();
+                    break;
+
+		// Shifting an Element
+                case 3:
+                    queue.shiftElements();
+                    break;
+
+		// Traversing and Printing the Element
+                case 4:
+                    queue.traverseAndPrint();
+                    break;
+
+		// Exits the Program
+                case 5:
+                    System.out.println ("Exiting Program. Goodbye!");
+                    System.exit(0);
+
+		// If the User Types an Invalid Input
+                default:
+                    System.out.println ("Invalid Choice. Please Try Again.");
+            }
+        }
+    }
+}

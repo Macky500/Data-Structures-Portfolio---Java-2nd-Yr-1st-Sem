@@ -1,0 +1,79 @@
+Logical Explanation of the Program "Queue" - Canaon
+
+- This Java program defines a class NumberedQueue that represents a circular queue of integers with a specified maximum size. 
+- The program provides methods to perform various operations on the queue, such as inserting an element at the rear, removing an element from the front, 
+shifting elements to the right, and traversing/printing the elements. 
+- The main method serves as a user interface to interact with the queue through a console menu.
+
+Key Components of The Program
+
+1. Class Definition (NumberedQueue) Class:
+- The class has private variables to represent the maximum size of the queue, an array to store queue elements, front and rear pointers, and the current 
+size of the queue.
+
+Fields:
+- maxSize: Maximum size of the queue.
+- queueArray: An array to store the elements of the queue.
+- front: Index of the front element.
+- rear: Index of the rear element.
+- size: Current number of elements in the queue.
+
+2. Constructor:
+- Initializes the queue with a specified size.
+- Sets front to 0, rear to -1, and size to 0.
+
+3. Methods:
+- isFull(): Checks if the queue is full. Returns true if the queue is full, false otherwise.
+- isEmpty(): Checks if the queue is empty. Returns true if the queue is empty, false otherwise.
+- insertAtRear(int data): Inserts an element at the rear of the queue.
+- removeElement(): Removes an element from the front of the queue.
+- shiftElements(): Shifts all elements one position to the right.
+- traverseAndPrint(): Traverses the queue and prints its elements.
+
+Main Method:
+1. User Input:
+- Creates a scanner for user input.
+- Asks the user to input the size of the queue and takes it as input.
+- Creates a NumberedQueue object with the specified size.
+
+2. Menu-driven Loop:
+- Displays a menu of options to the user indefinitely using a while (true) loop.
+- Options include inserting an element, removing an element, shifting elements, traversing and printing, and exiting the program.
+
+3. Switch Case:
+- Uses a switch-case statement to perform the selected operation based on the user's input.
+- Takes user input to choose an option.
+- Depending on the chosen option, it calls the corresponding method of the NumberedQueue class.
+- If the user chooses to exit, the program terminates.
+
+4. Operations:
+- Insert at Rear (Option 1): Takes a number as input and inserts it at the rear of the queue.
+- Remove Element (Option 2): Removes an element from the front of the queue.
+- Shift Elements (Option 3): Shifts all elements one position to the right.
+- Traverse and Print (Option 4): Prints the elements of the queue.
+- Exit (Option 5): Exits the program.
+
+5. User Interaction:
+- For each option, the program interacts with the user through the console, asking for input or displaying the result of the chosen operation.
+
+6. Flow Control:
+- The program runs in an infinite loop until the user chooses to exit.
+- The loop ensures that the user can perform multiple operations on the queue without restarting the program.
+
+7. Exiting the Program:
+- If the user chooses to exit, the program prints a goodbye message and terminates using System.exit(0).
+
+8. Error Handling:
+- The program includes a default case in the switch statement to handle invalid user input.
+- Handles invalid input gracefully and prompts the user to try again.
+
+Overall:
+- The program provides a simple interactive interface for users to manipulate a circular queue of numbers with various operations. 
+- The queue uses modular arithmetic to achieve circular behavior. 
+- The program runs until the user chooses to exit.
+
+
+
+
+
+
