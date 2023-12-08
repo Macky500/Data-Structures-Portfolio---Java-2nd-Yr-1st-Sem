@@ -1,0 +1,56 @@
+Logical Explanation of The Program "Linked List" - Canaon
+
+This Java program implements a simple linked list of numbers with basic operations like insertion at the beginning or end, deletion of a specific number, 
+and display of the linked list. 
+
+1. Node Class:
+- The Node class represents a node in the linked list. Each node contains an integer value (number) and a reference to the next node (next).
+
+2. LinkedList Class:
+- The LinkedList class is responsible for managing the linked list.
+- It has a private member head which points to the first node in the list.
+
+3. Methods in LinkedList Class:
+
+insertAtBeginning(int number): 
+- Creates a new node with the given number.
+- Sets the next pointer of the new node to the current head.
+- Updates the head to the new node.
+- Prints a message indicating the successful insertion at the beginning.
+
+insertAtEnd(int number):
+- Creates a new node with the given number.
+- If the list is empty, sets the head to the new node.
+- Otherwise, iterates through the list until it reaches the last node and appends the new node.
+- Prints a message indicating the successful insertion at the end.
+
+delete(int number):
+- Checks if the list is empty, and if so, prints a message and returns.
+- If the node to be deleted is the head, updates the head to the next node.
+- Otherwise, iterates through the list until it finds the node with the specified number or reaches the end.
+- If the node is found, removes it by adjusting the next pointers.
+- Prints a message indicating whether the deletion was successful.
+
+4. display():
+- Prints the elements of the linked list from the head to the end.
+
+5.Main Class:
+- The Main class contains the main method, which serves as the entry point of the program.
+- It creates an instance of Scanner for user input and an instance of LinkedList to manage the linked list.
+
+Main Method:
+1. Menu and User Input:
+- Displays a menu with options to insert at the beginning, insert at the end, delete, display, or exit.
+- Takes user input for the chosen option.
+
+2. Switch Case:
+- Uses a switch-case statement to perform the selected operation based on the user's input.
+- For example, if the user chooses to insert at the beginning, it prompts for a number and calls the insertAtBeginning method.
+- If the user chooses to display, it calls the display method.
+
+3. Exit Condition:
+- The program continues to run in a loop until the user chooses to exit (option 5).
+- Upon choosing the exit option, the program prints a message and exits.
+
+The program provides a simple interactive menu-driven interface for manipulating a linked list of numbers. It allows users to insert at the beginning or end, 
+delete a specific number, display the list, and exit the program.

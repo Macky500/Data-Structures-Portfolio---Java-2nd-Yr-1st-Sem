@@ -1,0 +1,136 @@
+// Linked List of Numbers - Canaon
+
+import java.util.Scanner;
+
+class Node {
+    int number;
+    Node next;
+
+    public Node(int number) {
+        this.number = number;
+        this.next = null;
+    }
+}
+
+class LinkedList {
+    private Node head;
+
+    public LinkedList() {
+        this.head = null;
+    }
+
+    // Insert at the Beginning of the Linked List
+    public void insertAtBeginning(int number) {
+        Node newNode = new Node(number);
+        newNode.next = head;
+        head = newNode;
+        System.out.println ("Inserted " + number + " at the Beginning.");
+    }
+
+    // Insert at the End of the Linked List
+    public void insertAtEnd(int number) {
+        Node newNode = new Node(number);
+        if (head == null) {
+            head = newNode;
+        } else {
+            Node temp = head;
+            while (temp.next != null) {
+                temp = temp.next;
+            }
+            temp.next = newNode;
+        }
+        System.out.println ("Inserted " + number + " at the End.");
+    }
+
+    // Delete a Node with a Specific Number Value
+    public void delete(int number) {
+        if (head == null) {
+            System.out.println ("List is Empty. Nothing to Delete.");
+            return;
+        }
+
+        if (head.number == number) {
+            head = head.next;
+            System.out.println("Deleted First Occurrence of " + number);
+            return;
+        }
+
+        Node temp = head;
+        while (temp.next != null && temp.next.number != number) {
+            temp = temp.next;
+        }
+
+        if (temp.next == null) {
+            System.out.println (number + " Not Found in the List.");
+        } else {
+            temp.next = temp.next.next;
+            System.out.println ("Deleted First Occurrence of " + number);
+        }
+    }
+
+    // Display the Linked List
+    public void display() {
+        System.out.print("Linked List: ");
+        Node temp = head;
+        while (temp != null) {
+            System.out.print (temp.number + " ");
+            temp = temp.next;
+        }
+        System.out.println();
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        LinkedList linkedList = new LinkedList();
+
+        while (true) {
+            System.out.println ("\nChoose an Option:");
+            System.out.println ("1. Insert at the Beginning");
+            System.out.println ("2. Insert at the End");
+            System.out.println ("3. Delete");
+            System.out.println ("4. Display");
+            System.out.println ("5. Exit");
+            System.out.print ("Enter Your Choice: ");
+
+            int choice = scanner.nextInt();
+
+            switch (choice) {
+
+		// Inserts the Number at the Beginning
+                case 1:
+                    System.out.print ("Enter the Number to Insert at the Beginning: ");
+                    int numberAtBeginning = scanner.nextInt();
+                    linkedList.insertAtBeginning(numberAtBeginning);
+                    break;
+
+		// Inserts the Number at the End
+                case 2:
+                    System.out.print ("Enter the Number to Insert at the End: ");
+                    int numberAtEnd = scanner.nextInt();
+                    linkedList.insertAtEnd(numberAtEnd);
+                    break;
+
+		// Deletes The Number
+                case 3:
+                    System.out.print ("Enter the Number to Delete: ");
+                    int numberToDelete = scanner.nextInt();
+                    linkedList.delete(numberToDelete);
+                    break;
+
+		// Displays The Number
+                case 4:
+                    linkedList.display();
+                    break;
+
+		// Exits The Program
+                case 5:
+                    System.out.print ("Exiting the Program. ");
+                    System.exit(0);
+                default:
+                    System.out.print ("Invalid Choice. Please Enter a Valid Option. ");
+            }
+        }
+    }
+}
