@@ -1,0 +1,46 @@
+Logical Explanation of The Program "List" - Canaon
+
+This Java program implements a simple interactive console-based application for managing a list of numbers. 
+
+1. Import Statements:
+- The program imports necessary classes from the java.util package, such as ArrayList, List and Scanner, to handle lists and user input.
+  ArrayList and List are used for creating and manipulating lists, and Scanner is used to take input from the user.
+
+2. Class Declaration:
+The NumberList class is declared, and the main method is the entry point of the program.
+
+3. Variable Initialization:
+- An ArrayList named myList is created to store numbers as strings.
+- A Scanner object named scanner is created to read user input.
+
+4. Menu and Infinite Loop:
+- The program runs in an infinite loop (while (true)) to keep the menu active until the user chooses to exit.
+
+5. Menu Display:
+- The program displays a menu with seven options:
+1. Add a Number
+2. Update a Number
+3. Search for a Number
+4. Remove a Number
+5. Access a Number
+6. Check if a Number is Present
+7. Exit
+
+6. User Input:
+- The program prompts the user to enter a choice by displaying the menu and reading an integer from the user.
+
+7. Switch Case:
+- The program uses a switch statement to execute code based on the user's choice.
+
+8. Menu Options:
+1. Add a Number - Prompts the user to enter a number, adds it to the list, and confirms the addition.
+2. Update a Number - Prompts the user for the index to update, checks if it's valid, updates the value, and confirms the update.
+3. Search for a Number - Prompts the user to enter a number, searches for its index and last index in the list, and displays the results.
+4. Remove a Number - Prompts the user for the index to remove, checks if it's valid, removes the number, and confirms the removal.
+5. Access a Number - Prompts the user for the index to access, checks if it's valid, retrieves and displays the number.
+6. Check if a Number is Present - Prompts the user to enter a number, checks if it's present in the list, and displays the result.
+7. Exit the Program - Prints an exit message and terminates the program.
+8. Default - Handles invalid menu choices and prompts the user to enter a valid option.
+
+The program continues to loop until the user chooses to exit (option 7), at which point the program terminates. 
+It provides basic functionality to manipulate a list of numbers through user input.
