@@ -1,0 +1,174 @@
+// Binary Tree - Canaon
+
+import java.util.Scanner;
+
+class Node {
+    int key;
+    Node left, right;
+
+    public Node(int item) {
+        key = item;
+        left = right = null;
+    }
+}
+
+public class BinaryTree {
+    private Node root;
+
+    public BinaryTree() {
+        root = null;
+    }
+
+    // Inserting a Key Into The Binary Tree
+    private Node insert(Node root, int key) {
+        if (root == null) {
+            root = new Node(key);
+            return root;
+        }
+
+        if (key < root.key) {
+            root.left = insert(root.left, key);
+        } else if (key > root.key) {
+            root.right = insert(root.right, key);
+        }
+
+        return root;
+    }
+
+    public void insert(int key) {
+        root = insert(root, key);
+    }
+
+    // Deleting a Key From The Binary Tree
+    private Node delete(Node root, int key) {
+        if (root == null) {
+            return root;
+        }
+
+        if (key < root.key) {
+            root.left = delete(root.left, key);
+        } else if (key > root.key) {
+            root.right = delete(root.right, key);
+        } else {
+            // Node with only one child or no child
+            if (root.left == null) {
+                return root.right;
+            } else if (root.right == null) {
+                return root.left;
+            }
+
+            // Node with Two Children: Getting the Inorder Successor (Smallest in the Right Subtree)
+            root.key = minValue(root.right);
+
+            // Deleting the Inorder Successor
+            root.right = delete(root.right, root.key);
+        }
+
+        return root;
+    }
+
+    private int minValue(Node root) {
+        int minValue = root.key;
+        while (root.left != null) {
+            minValue = root.left.key;
+            root = root.left;
+        }
+        return minValue;
+    }
+
+    public void delete(int key) {
+        root = delete(root, key);
+    }
+
+    // Searching For a Key In The Binary Tree
+    private boolean search(Node root, int key) {
+        if (root == null || root.key == key) {
+            return root != null;
+        }
+
+        if (key < root.key) {
+            return search(root.left, key);
+        } else {
+            return search(root.right, key);
+        }
+    }
+
+    public boolean search(int key) {
+        return search(root, key);
+    }
+
+    // Traversing The Binary Tree (Inorder)
+    private void inorderTraversal(Node root) {
+        if (root != null) {
+            inorderTraversal(root.left);
+            System.out.print(root.key + " ");
+            inorderTraversal(root.right);
+        }
+    }
+
+    public void inorderTraversal() {
+        System.out.print("Inorder Traversal: ");
+        inorderTraversal(root);
+        System.out.println();
+    }
+
+    public static void main(String[] args) {
+        BinaryTree binaryTree = new BinaryTree();
+        Scanner scanner = new Scanner(System.in);
+        int choice, value;
+
+        do {
+            System.out.println ("\nBinary Tree Operations:");
+            System.out.println ("1. Insert");
+            System.out.println ("2. Delete");
+            System.out.println ("3. Search");
+            System.out.println ("4. Inorder Traversal");
+            System.out.println ("5. Exit");
+            System.out.print ("Enter Your Choice: ");
+            choice = scanner.nextInt();
+
+            switch (choice) {
+		// Entering the Value for Insertion
+                case 1:
+                    System.out.print ("Enter The Value to Insert: ");
+                    value = scanner.nextInt();
+                    binaryTree.insert(value);
+                    break;
+
+		// Entering the Value for Deletion
+                case 2:
+                    System.out.print ("Enter The Value to Delete: ");
+                    value = scanner.nextInt();
+                    binaryTree.delete(value);
+                    break;
+
+		// Entering the Value to Check Whether or Not It is in the Binary Tree
+                case 3:
+                    System.out.print ("Enter The Value to Search: ");
+                    value = scanner.nextInt();
+                    if (binaryTree.search(value)) {
+                        System.out.println (value + " is Found in the Binary Tree.");
+                    } else {
+                        System.out.println (value + " is Not Found in the Binary Tree.");
+                    }
+                    break;
+
+		// Inorder Traversal of The Binary Tree (Left-Root-Right Pattern)
+                case 4:
+                    binaryTree.inorderTraversal();
+                    break;
+
+		// Terminates the Program
+                case 5:
+                    System.out.println ("Exiting the Program. Goodbye!");
+                    break;
+
+		// If The User Inputs an Invalid Option
+                default:
+                    System.out.println ("Invalid Choice. Please Enter a Valid Option.");
+            }
+        } while (choice != 5);
+
+        scanner.close();
+    }
+}

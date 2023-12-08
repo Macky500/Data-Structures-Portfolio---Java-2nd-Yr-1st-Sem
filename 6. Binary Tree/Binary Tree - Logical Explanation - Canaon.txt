@@ -1,0 +1,48 @@
+Logical Explanation of The Program "Binary Tree" - Canaon
+
+This Java program implements a simple binary search tree (BST) and provides basic operations such as insertion, deletion, searching, and inorder traversal.
+
+1. Node Class:
+- The Node class represents a node in the binary tree. 
+- Each node has an integer key, a reference to the left child (left), and a reference to the right child (right).
+
+2. BinaryTree Class:
+- The BinaryTree class is responsible for managing the binary tree. 
+- It has a private instance variable root representing the root of the tree.
+
+3. Insertion Operation:
+- The insert method inserts a new key into the binary tree. 
+- It is a recursive method that compares the key with the current node's key and traverses either the left or right subtree accordingly until an appropriate 
+position for insertion is found.
+
+4. Deletion Operation:
+- The delete method removes a key from the binary tree. 
+- It handles three cases:
+1. Node with no child: Simply removes the node.
+2. Node with one child: Removes the node and connects its parent to its only child.
+3. Node with two children: Finds the inorder successor (smallest key in the right subtree), replaces the node's key with the successor's key, and then 
+recursively deletes the successor.
+
+5. Searching Operation:
+- The search method checks whether a key exists in the binary tree. 
+- It is a recursive method that compares the key with the current node's key and traverses either the left or right subtree accordingly.
+
+6. Inorder Traversal Operation:
+- The inorderTraversal method performs an inorder traversal of the binary tree, printing the keys in ascending order (Left-Root-Right).
+
+7. Main Method:
+- The main method provides a simple user interface using a Scanner for interacting with the binary tree. 
+- It allows the user to:
+1. Insert a value into the tree.
+2. Delete a value from the tree.
+3. Search for a value in the tree.
+4. Display the inorder traversal of the tree.
+5. Exit the program.
+
+8. User Interaction:
+- The program uses a menu-driven approach where the user can input choices (1 to 5) to perform various operations. The loop continues until the user chooses to exit (option 5).
+
+9. Closing Scanner:
+- The Scanner is properly closed using the scanner.close() method to prevent resource leaks.
+
+The program provides a basic implementation of a binary search tree with user interaction for testing various operations on the tree.
