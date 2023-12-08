@@ -1,0 +1,125 @@
+// List of Numbers - Canaon
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+
+public class NumberList {
+    public static void main(String[] args) {
+        List<String> myList = new ArrayList<>();
+        Scanner scanner = new Scanner(System.in);
+
+        while (true) {
+            System.out.println ("\nList: " + myList);
+            System.out.println (" 1. Add a Number ");
+            System.out.println (" 2. Update a Number ");
+            System.out.println (" 3. Search for a Number ");
+            System.out.println (" 4. Remove a Number ");
+            System.out.println (" 5. Access a Number ");
+            System.out.println (" 6. Check if a Number is Present ");
+            System.out.println (" 7. Exit ");
+            System.out.print (" Enter Your Choice: ");
+
+            int choice = scanner.nextInt();
+            scanner.nextLine();
+
+            switch (choice) {
+                // Add a Number
+                case 1:
+                    System.out.print (" Enter Number to Add: ");
+                    String elementToAdd = scanner.nextLine();
+                    myList.add(elementToAdd);
+                    System.out.println (" Number Added Successfully. ");
+                    break;
+
+                // Update a Number
+                case 2:
+                    System.out.print (" Enter Index to Update: ");
+                    int indexToUpdate = scanner.nextInt();
+                    scanner.nextLine();
+
+                    if (indexToUpdate >= 0 && indexToUpdate < myList.size()) {
+                        System.out.print (" Enter New Value: ");
+                        String newValue = scanner.nextLine();
+                        myList.set(indexToUpdate, newValue);
+                        System.out.println (" Number Updated Successfully. ");
+                    } else {
+                        System.out.println (" Invalid Index.");
+                    }
+                    break;
+
+                // Search for a Number
+                case 3:
+                    System.out.print (" Enter Number to Search: ");
+                    String numberToSearch = scanner.nextLine();
+                    int indexOfElement = myList.indexOf(numberToSearch);
+                    int lastIndexOfElement = myList.lastIndexOf(numberToSearch);
+
+                    if (indexOfElement != -1) {
+                        System.out.println (" Number Found at Index: " + indexOfElement);
+                    } else {
+                        System.out.println (" Number Not Found in the List. ");
+                    }
+
+                    if (lastIndexOfElement != -1) {
+                        System.out.println (" Last Occurrence found at index: " + lastIndexOfElement);
+                    } else {
+                        System.out.println (" Last Occurrence Not Found in the List. ");
+                    }
+                    break;
+
+                // Remove a Number
+                case 4:
+                    System.out.print (" Enter the Number to Remove: ");
+                    int numberToRemove = scanner.nextInt();
+                    scanner.nextLine();
+
+                    if (numberToRemove >= 0 && numberToRemove < myList.size()) {
+                        myList.remove(numberToRemove);
+                        System.out.println (" Number Removed Successfully. ");
+
+                    } else {
+                        System.out.println (" Invalid Index.");
+                    }
+                    break;
+
+                // Access a Number
+                case 5:
+                    System.out.print (" Enter the Number to Access: ");
+                    int indexToAccess = scanner.nextInt();
+                    scanner.nextLine();
+
+                    if (indexToAccess >= 0 && indexToAccess < myList.size()) {
+                        String accessedElement = myList.get(indexToAccess);
+                        System.out.println (" Number at index " + indexToAccess + ": " + accessedElement);
+
+                    } else {
+                        System.out.println (" Invalid Index.");
+                    }
+                    break;
+
+                // Check a Number
+                case 6:
+                    System.out.print ("Enter Number to Check: ");
+                    String elementToCheck = scanner.nextLine();
+                    boolean isPresent = myList.contains(elementToCheck);
+
+                    if (isPresent) {
+                        System.out.println ("Number is Already Present in the List.");
+
+                    } else {
+                        System.out.println ("Number is Not Present in the List.");
+                    }
+                    break;
+
+                // Exit the Program
+                case 7:
+                    System.out.println (" Exiting the Program. ");
+                    System.exit(0);
+
+                default:
+                    System.out.println (" Invalid Choice. Please Enter a Valid Option.");
+            }
+        }
+    }
+}
