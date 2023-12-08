@@ -1,0 +1,72 @@
+// Basic Tree - Canaon
+
+import java.util.ArrayList;
+import java.util.List;
+
+class TreeNode {
+    int data;
+    List<TreeNode> children;
+
+    public TreeNode(int item) {
+        data = item;
+        children = new ArrayList<>();
+    }
+
+    public void addChild(TreeNode child) {
+        children.add(child);
+    }
+
+    public List<TreeNode> getChildren() {
+        return children;
+    }
+}
+
+class Tree {
+    TreeNode root;
+
+    public Tree() {
+        root = null;
+    }
+
+    public void setRoot(TreeNode root) {
+        this.root = root;
+    }
+
+    public void printTree(TreeNode node) {
+        if (node != null) {
+            System.out.print (node.data + " -> [ ");
+            for (TreeNode child : node.children) {
+                System.out.print (child.data + " ");
+            }
+            System.out.println ("]");
+
+            for (TreeNode child : node.children) {
+                printTree(child);
+            }
+        }
+    }
+
+    public static void main(String[] args) {
+        Tree tree = new Tree();
+
+        // Creating Nodes
+        TreeNode rootNode = new TreeNode(1);
+        TreeNode child1 = new TreeNode(2);
+        TreeNode child2 = new TreeNode(3);
+        TreeNode child3 = new TreeNode(4);
+        TreeNode child4 = new TreeNode(5);
+
+        // Building The Tree
+        rootNode.addChild(child1);
+        rootNode.addChild(child2);
+        child1.addChild(child3);
+        child1.addChild(child4);
+
+        // Setting The Root of the Tree
+        tree.setRoot(rootNode);
+
+        // Printing The Tree
+        System.out.println ("Tree Structure:");
+        tree.printTree(tree.root);
+    }
+}

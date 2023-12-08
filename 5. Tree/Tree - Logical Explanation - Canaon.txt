@@ -1,0 +1,94 @@
+Logical Explanation of the Program "Tree" - Canaon
+
+This Java program defines two classes, TreeNode and Tree, to represent a basic tree structure and includes a main method to demonstrate the creation 
+and printing of a tree.
+
+1. TreeNode Class:
+- "TreeNode" represents a node in the tree.
+- It has an integer data field (int data) to store the node's value.
+- It has a List<TreeNode> children to store a list of child nodes.
+The constructor initializes the data field and initializes the list of children as an empty ArrayList.
+- The addChild method adds a child node to the list of children.
+- The getChildren method returns the list of children.
+
+2. Tree Class:
+- "Tree" represents the entire tree and has a reference to the root node.
+- The constructor initializes the root as null.
+- The setRoot method sets the root of the tree.
+- The printTree method recursively prints the tree structure starting from a given node.
+- The main method is the entry point of the program.
+- It creates a Tree object.
+- It creates several TreeNode objects to build a basic tree structure.
+- It establishes the relationships between nodes using the addChild method.
+- It sets the root of the tree using the setRoot method.
+- It prints the tree structure using the printTree method.
+
+3. Main Method Execution:
+- An instance of the Tree class is created.
+- Several nodes are created and linked together to form a tree structure.
+- The root of the tree is set using the setRoot method.
+- The tree structure is printed using the printTree method, starting from the root.
+
+Output:
+
+Tree structure:
+1 -> [ 2 3 ]
+2 -> [ 4 5 ]
+4 -> [ ]
+5 -> [ ]
+3 -> [ ]
+
+- The output shows the tree structure, where each line represents a node and its children. 
+- In this case, node 1 has children 2 and 3, node 2 has children 4 and 5, and nodes 4, 5, and 3 have no children.
+
+
+Breaking it step by step, we have:
+
+1. Defining the TreeNode Class:
+- The TreeNode class represents a node in the tree. Each node has an integer data value and a list of children nodes.
+- The addChild method adds a child node to the list of children, and the getChildren method returns the list of children.
+
+2. Defining the Tree Class:
+- The Tree class has a root attribute representing the root node of the tree.
+- The setRoot method allows setting the root of the tree.
+- The printTree method is a recursive function that prints the structure of the tree. It starts from a given node, prints its data, and then recursively 
+prints the structure of each child.
+
+3. Creating a Tree Object:
+- In the main method, a new Tree object called tree is created.
+
+4. Creating the Tree Nodes:
+- Several TreeNode objects are created with integer data values: rootNode (1), child1 (2), child2 (3), child3 (4), and child4 (5).
+
+5. Building the Tree:
+- Nodes are connected to form a tree structure. rootNode is set as the root, and children are added to their respective parent nodes using the addChild method.
+
+The tree structure looks like this:
+
+1 -> [ 2 3 ]
+2 -> [ 4 5 ]
+
+6. Setting the Tree Root:
+- The root of the tree object is set using the setRoot method, with rootNode as the argument.
+
+7. Printing the Tree:
+- The program then prints the structure of the tree using the printTree method starting from the root.
+
+The output will be:
+
+Tree structure:
+1 -> [ 2 3 ]
+2 -> [ 4 5 ]
+4 -> [ ]
+5 -> [ ]
+3 -> [ ]
+
+- The output represents the hierarchical structure of the tree, indicating the parent-child relationships. 
+- The indentation reflects the level of nesting in the tree. In this case, nodes 4 and 5 are children of node 2, and node 2 is a child of node 1.
+
+
+
+
+
+
+
