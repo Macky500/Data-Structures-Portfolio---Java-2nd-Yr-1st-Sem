@@ -1,0 +1,85 @@
+// Stack of Numbers - Canaon
+
+import java.util.Scanner;
+import java.util.Stack;
+
+public class NumberedStack {
+    private Stack<Integer> stack;
+
+    public NumberedStack() {
+        this.stack = new Stack<>();
+    }
+
+    public void push(int number) {
+        stack.push(number);
+        System.out.println (number + " Has Been Pushed onto the Stack.");
+    }
+
+    public void pop() {
+        if (stack.isEmpty()) {
+            System.out.println ("Stack is Empty. Cannot Pop.");
+        } else {
+            int poppedNumber = stack.pop();
+            System.out.println (poppedNumber + " Has Been Popped from the Stack.");
+        }
+    }
+
+    public void display() {
+        if (stack.isEmpty()) {
+            System.out.println ("Stack is Empty.");
+        } else {
+            System.out.println ("Numbers in the Stack: " + stack);
+        }
+    }
+
+    public void search(int number) {
+        int position = stack.search(number);
+        if (position == -1) {
+            System.out.println (number + " Not Found in the Stack.");
+        } else {
+            System.out.println (number + " Found at Position " + position + " From the Top of the Dtack.");
+        }
+    }
+
+    public static void main(String[] args) {
+        NumberedStack numberedStack = new NumberedStack();
+        Scanner scanner = new Scanner(System.in);
+
+        while (true) {
+            System.out.println ("\nChoose an Option: ");
+            System.out.println ("1. Push");
+            System.out.println ("2. Pop");
+            System.out.println ("3. Display");
+            System.out.println ("4. Search");
+            System.out.println ("5. Exit");
+            System.out.print ("Enter Your Choice: ");
+            
+            int choice = scanner.nextInt();
+
+            switch (choice) {
+                case 1:
+                    System.out.print ("Enter a Number to Push: ");
+                    int pushNumber = scanner.nextInt();
+                    numberedStack.push(pushNumber);
+                    break;
+                case 2:
+                    numberedStack.pop();
+                    break;
+                case 3:
+                    numberedStack.display();
+                    break;
+                case 4:
+                    System.out.print ("Enter a Number to Search: ");
+                    int searchNumber = scanner.nextInt();
+                    numberedStack.search(searchNumber);
+                    break;
+                case 5:
+                    System.out.print ("Exiting The Program. ");
+                    System.exit(0);
+                    break;
+                default:
+                    System.out.print ("Invalid Choice. Please choose a Valid Option. ");
+            }
+        }
+    }
+}
